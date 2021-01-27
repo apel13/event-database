@@ -1,12 +1,11 @@
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
+
+#pragma once
 
 #include <QMainWindow>
 
-#include "core/DataBase/database.h"
-#include "core/DataBase/database.h"
-#include "core/Date/date.h"
-#include "core/ExpParser/condition_parser.h"
+#include "../core/DataBase/database.h"
+#include "../core/Date/date.h"
+#include "../core/ExpParser/condition_parser.h"
 
 
 QT_BEGIN_NAMESPACE
@@ -33,4 +32,3 @@ private:
 
     std::ostringstream parse_query(std::string query);
 };
-#endif // MAINWINDOW_H

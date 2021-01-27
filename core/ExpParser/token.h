@@ -2,8 +2,7 @@
 // Created by apel on 17.01.2021.
 //
 
-#ifndef YANDEX_CPP_COURSE_TOKEN_H
-#define YANDEX_CPP_COURSE_TOKEN_H
+#pragma once
 
 #include <sstream>
 #include <vector>
@@ -24,7 +23,4 @@ struct Token {
     const TokenType type;
 };
 
-std::vector<Token> Tokenize(std::istream &cl);
-
-
-#endif //YANDEX_CPP_COURSE_TOKEN_H
+std::vector<Token> Tokenize(std::istream& cl);

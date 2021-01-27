@@ -4,10 +4,10 @@
 
 #include "condition_parser.h"
 
-#include "../Nodes/EmptyNode/EmptyNode.h"
-#include "../Nodes/DateComparisonNode/DateComparisonNode.h"
-#include "../Nodes/EventComparisonNode/EventComparisonNode.h"
-#include "../Nodes/LogicalOperationNode/LogicalOperationNode.h"
+#include "../Nodes/EmptyNode/empty_node.h"
+#include "../Nodes/DateComparisonNode/date_comparison_node.h"
+#include "../Nodes/EventComparisonNode/event_comparison_node.h"
+#include "../Nodes/LogicalOperationNode/logical_operation_node.h"
 
 
 #include <map>
@@ -40,17 +40,23 @@ template <class It> std::shared_ptr<Node> ParseComparison(It& current, It end) {
     Comparison cmp;
     if (op.value == "<") {
         cmp = Comparison::Less;
-    } else if (op.value == "<=") {
+    }
+    else if (op.value == "<=") {
         cmp = Comparison::LessOrEqual;
-    } else if (op.value == ">") {
+    }
+    else if (op.value == ">") {
         cmp = Comparison::Greater;
-    } else if (op.value == ">=") {
+    }
+    else if (op.value == ">=") {
         cmp = Comparison::GreaterOrEqual;
-    } else if (op.value == "==") {
+    }
+    else if (op.value == "==") {
         cmp = Comparison::Equal;
-    } else if (op.value == "!=") {
+    }
+    else if (op.value == "!=") {
         cmp = Comparison::NotEqual;
-    } else {
+    }
+    else {
         throw std::logic_error("Unknown comparison token: " + op.value);
     }
 
@@ -60,7 +66,8 @@ template <class It> std::shared_ptr<Node> ParseComparison(It& current, It end) {
     if (column.value == "date") {
         std::istringstream is(value);
         return std::make_shared<DateComparisonNode>(cmp, ParseDate(is));
-    } else {
+    }
+    else {
         return std::make_shared<EventComparisonNode>(cmp, value);
     }
 }
@@ -80,7 +87,8 @@ std::shared_ptr<Node> ParseExpression(It& current, It end, unsigned precedence) 
             throw std::logic_error("Missing right paren");
         }
         ++current; // consume ')'
-    } else {
+    }
+    else {
         left = ParseComparison(current, end);
     }
 
@@ -94,7 +102,7 @@ std::shared_ptr<Node> ParseExpression(It& current, It end, unsigned precedence) 
         }
 
         const auto logical_operation = current->value == "AND" ? LogicalOperation::And
-                                                               : LogicalOperation::Or;
+            : LogicalOperation::Or;
         const auto current_precedence = precedences.at(logical_operation);
         if (current_precedence <= precedence) {
             break;
@@ -103,8 +111,8 @@ std::shared_ptr<Node> ParseExpression(It& current, It end, unsigned precedence) 
         ++current; // consume op
 
         left = std::make_shared<LogicalOperationNode>(
-                logical_operation, left, ParseExpression(current, end, current_precedence)
-        );
+            logical_operation, left, ParseExpression(current, end, current_precedence)
+            );
     }
 
     return left;

@@ -60,14 +60,10 @@ std::ostringstream MainWindow::parse_query(std::string query)
            os << "No entries" << endl;
        }
     }
-//    else if (command.empty()) {
-//       continue;
-//    }
-    else {
+    else if (!command.empty()) {
        throw logic_error("Unknown command: " + command);
     }
     return os;
-
 }
 
 void MainWindow::on_btn_execute_clicked()
@@ -78,8 +74,8 @@ void MainWindow::on_btn_execute_clicked()
     std::string result;
     try {
         result = this->parse_query(query).str();
-    }  catch (...) {
-        result = "error";
+    }  catch (std::exception &e) {
+        result = e.what();
     }
     ui->text_result_2->setText(result.data());
 }

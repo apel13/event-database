@@ -2,8 +2,7 @@
 // Created by apel on 17.01.2021.
 //
 
-#ifndef YANDEX_CPP_COURSE_COMPARISON_H
-#define YANDEX_CPP_COURSE_COMPARISON_H
+#pragma once
 
 enum class Comparison {
     Less,
@@ -13,5 +12,3 @@ enum class Comparison {
     Equal,
     NotEqual,
 };
-
-#endif //YANDEX_CPP_COURSE_COMPARISON_H

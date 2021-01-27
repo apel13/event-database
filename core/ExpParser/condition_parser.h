@@ -2,12 +2,11 @@
 // Created by apel on 17.01.2021.
 //
 
-#ifndef YANDEX_CPP_COURSE_CONDITION_PARSER_H
-#define YANDEX_CPP_COURSE_CONDITION_PARSER_H
+#pragma once
 
-#include "Token.h"
+#include "token.h"
 #include "comparison.h"
-#include "LogicalOperation.h"
+#include "logical_operation.h"
 
 #include "../Date/date.h"
 #include "../Nodes/node.h"
@@ -18,6 +17,3 @@
 std::shared_ptr<Node> ParseCondition(std::istream& is);
 
 void TestParseCondition();
-
-
-#endif //YANDEX_CPP_COURSE_CONDITION_PARSER_H

@@ -2,12 +2,12 @@
 // Created by apel on 17.01.2021.
 //
 
-#include "DateComparisonNode.h"
+#include "date_comparison_node.h"
 
-DateComparisonNode::DateComparisonNode(const Comparison &comparison, const Date &date)
-        : _comparison(comparison), _date(date) {}
+DateComparisonNode::DateComparisonNode(const Comparison& comparison, const Date& date)
+    : _comparison(comparison), _date(date) {}
 
-bool DateComparisonNode::Evaluate(const Date &date, const std::string &string) const {
+bool DateComparisonNode::Evaluate(const Date& date, const std::string& string) const {
     if (_comparison == Comparison::Less)
         return date < _date;
     if (_comparison == Comparison::LessOrEqual)
