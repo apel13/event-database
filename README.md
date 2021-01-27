@@ -1,6 +1,6 @@
 # event-database
 
-**DateEvent** is an event database that can select and delete events that match a given condition.
+**DateEvent** is a graphical application that interacts with a temporary event database that can select and delete events that match a given condition. Some of the functionality was written as part of the Yandex C++ course.
 
 ## Supported queries:
 
